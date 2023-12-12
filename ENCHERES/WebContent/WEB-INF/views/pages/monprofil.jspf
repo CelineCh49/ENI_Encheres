@@ -1,0 +1,55 @@
+<%@ page import="fr.eni.encheres.bo.Utilisateur" %>
+    <style>
+        .center-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">ENI-Enchères</a>
+        </nav>
+
+        <div class="jumbotron center-content">
+            <div class="card-content">
+                <h1 class="display-4 text-center">Mon Profil</h1>
+
+                <%-- Récupérer l'objet Utilisateur à partir de la requête --%>
+                <% Utilisateur profilUtilisateur = (Utilisateur) request.getAttribute("profilUtilisateur"); %>
+
+                <%-- Vérifier si l'utilisateur existe --%>
+                <% if (profilUtilisateur != null) { %>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">Pseudo : <%= profilUtilisateur.getPseudo() %></p>
+                            <p class="card-text">Nom : <%= profilUtilisateur.getNom() %></p>
+                            <p class="card-text">Prénom : <%= profilUtilisateur.getPrenom() %></p>
+                            <p class="card-text">Email : <%= profilUtilisateur.getEmail() %></p>
+                            <p class="card-text">Téléphone : <%= profilUtilisateur.getTelephone() %></p>
+                            <p class="card-text">Rue : <%= profilUtilisateur.getRue() %></p>
+                            <p class="card-text">Code postal : <%= profilUtilisateur.getCodePostal() %></p>
+                            <p class="card-text">Ville : <%= profilUtilisateur.getVille() %></p>
+
+                            <%-- Afficher d'autres informations du profil ici --%>
+                        </div>
+                    </div>
+                <% } else { %>
+                    <p class="card-text">Utilisateur introuvable.</p>
+                <% } %>
+
+                <form action="modifiermonprofil" method="get">
+                    <button type="submit" class="btn btn-primary">Modifier</button>
+                </form>
+            </div>
+        </div>
+    </div>
+

@@ -1,0 +1,10 @@
+
+    <h1>Succès</h1>
+    <p>Vos modifications ont été enregistrées avec succès.</p>
+    
+    <%
+        // Effectuer la redirection vers la page d'accueil après un court délai
+        response.setHeader("Refresh", "3; URL=redirection?page=accueilconnecte");
+    %>
+    
+    <p>Redirection vers la page d'accueil...</p>

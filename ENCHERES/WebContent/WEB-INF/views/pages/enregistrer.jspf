@@ -1,0 +1,67 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<style>
+.error-message {
+    color: red;
+    background-color: #fdd;
+}
+</style>
+
+<c:if test="${not empty errors}">
+    <div class='error-message'>
+        <ul>
+            <c:forEach var="error" items="${errors}">
+                <li>${fn:escapeXml(fr.eni.encheres.messages.MessageReader.getMessageReader(error))}</li>
+            </c:forEach>
+        </ul>
+    </div>
+</c:if>
+
+<%@page import="fr.eni.encheres.bo.Utilisateur"%>
+    <div class="container">
+        <h1>Enregistrer un utilisateur</h1>
+        <form action="${pageContext.request.contextPath}/enregistrer" method="post">
+            <div class="mb-3">
+                <label for="pseudo" class="form-label">Pseudo</label>
+                <input type="text" class="form-control" id="pseudo" name="pseudo" value="<%= request.getAttribute("utilisateur") != null ? ((Utilisateur) request.getAttribute("utilisateur")).getPseudo() : "" %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="nom" name="nom" value="<%= request.getAttribute("utilisateur") != null ? ((Utilisateur) request.getAttribute("utilisateur")).getNom() : "" %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="prenom" class="form-label">Prénom</label>
+                <input type="text" class="form-control" id="prenom" name="prenom" value="<%= request.getAttribute("utilisateur") != null ? ((Utilisateur) request.getAttribute("utilisateur")).getPrenom() : "" %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="<%= request.getAttribute("utilisateur") != null ? ((Utilisateur) request.getAttribute("utilisateur")).getEmail() : "" %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="telephone" class="form-label">Téléphone</label>
+                <input type="tel" class="form-control" id="telephone" name="telephone" value="<%= request.getAttribute("utilisateur") != null ? ((Utilisateur) request.getAttribute("utilisateur")).getTelephone() : "" %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="rue" class="form-label">Rue</label>
+                <input type="text" class="form-control" id="rue" name="rue" value="<%= request.getAttribute("utilisateur") != null ? ((Utilisateur) request.getAttribute("utilisateur")).getRue() : "" %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="codePostal" class="form-label">Code Postal</label>
+                <input type="text" class="form-control" id="codePostal" name="codePostal" value="<%= request.getAttribute("utilisateur") != null ? ((Utilisateur) request.getAttribute("utilisateur")).getCodePostal() : "" %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="ville" class="form-label">Ville</label>
+                <input type="text" class="form-control" id="ville" name="ville" value="<%= request.getAttribute("utilisateur") != null ? ((Utilisateur) request.getAttribute("utilisateur")).getVille() : "" %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="motDePasse" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="motDePasse" name="motDePasse" value="<%= request.getAttribute("utilisateur") != null ? ((Utilisateur) request.getAttribute("utilisateur")).getMotDePasse() : "" %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="motDePasseConfirmation" class="form-label">Confirmer le mot de passe</label>
+                <input type="password" class="form-control" id="motDePasseConfirmation" name="motDePasseConfirmation" value="<%= request.getAttribute("utilisateur") != null ? ((Utilisateur) request.getAttribute("utilisateur")).getMotDePasse() : "" %>" required>
+</div>
+<button type="submit" class="btn btn-primary">Enregistrer</button>
+</form>
+</div>

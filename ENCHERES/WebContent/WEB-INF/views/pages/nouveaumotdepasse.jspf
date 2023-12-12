@@ -1,0 +1,64 @@
+<style>
+    .container {
+				  max-width: 400px;
+				  margin: 0 auto;
+				  padding: 20px;
+				}
+
+			h1 {
+			  text-align: center;
+			  margin-bottom: 20px;
+			}
+			
+			.form-group {
+			  margin-bottom: 20px;
+			}
+			
+			label {
+			  
+			 
+			font-weight: bold;
+			}
+			
+			input[type="password"] {
+			  width: 100%;
+			  padding: 10px;
+			  border: 1px solid #ccc;
+			  border-radius: 4px;
+			}
+			
+			button {
+			  width: 100%;
+			  padding: 10px;
+			  background-color: #007bff;
+			  color: #fff;
+			  border: none;
+			  border-radius: 4px;
+			  cursor: pointer;
+			}
+			
+			button:hover {
+			  background-color: #0069d9;
+			}
+			
+			@media (max-width: 767px) {
+			  .container {
+			    max-width: 100%;
+			  }
+			}
+    </style>
+
+    <div class="container">
+        <h1 class="text-center">Réinitialisation du mot de passe</h1>
+        <form action="reinitialisationmotdepasse" method="post">
+            <div class="form-group">
+                
+               
+<label for="nouveauMotDePasse">Nouveau mot de passe :</label>
+                <input type="password" class="form-control" id="nouveaumotdepasse" name="nouveaumotdepasse" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Valider</button>
+            </div>
+        </form>
+    </div>

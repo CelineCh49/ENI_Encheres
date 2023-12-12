@@ -1,0 +1,54 @@
+<%@ page import="fr.eni.encheres.bo.Utilisateur" %>
+
+    
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .profil-container {
+            text-align: center;
+            width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+        }
+
+        .profil-container p {
+            margin-bottom: 10px;
+        }
+
+        .profil-container a {
+            color: #4CAF50;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    </style>
+
+		<p><a href="#">ENI-Enchères</a></p>
+	 <h1>Profil de l'utilisateur</h1>
+    
+    <%-- Récupérer l'objet Utilisateur à partir de la requête --%>
+   <% Utilisateur profilUtilisateur = (Utilisateur) request.getAttribute("profilUtilisateur"); %>
+    
+    <%-- Vérifier si l'utilisateur existe --%>
+    <% if (profilUtilisateur != null) { %>
+        <p>Pseudo : <%= profilUtilisateur.getPseudo() %></p>
+        <p>Nom : <%= profilUtilisateur.getNom() %></p>
+        <p>Prénom : <%= profilUtilisateur.getPrenom() %></p>
+        <p>Email : <%= profilUtilisateur.getEmail() %></p>
+        <p>Téléphone : <%= profilUtilisateur.getTelephone() %></p>
+		<p>Rue : <%= profilUtilisateur.getRue() %></p>
+		<p>Code postal : <%= profilUtilisateur.getCodePostal() %></p>
+		<p>Ville : <%= profilUtilisateur.getVille() %></p>
+        
+        <%-- Afficher d'autres informations du profil ici --%>
+    <% } else { %>
+        <p>Utilisateur introuvable.</p>
+    <% } %>

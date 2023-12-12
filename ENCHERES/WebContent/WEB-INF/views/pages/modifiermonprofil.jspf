@@ -1,0 +1,136 @@
+<%@ page import="fr.eni.encheres.bo.Utilisateur" %>
+
+    <style>
+        .center-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .profil-container {
+            width: 600px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .credit-label {
+            text-align: left;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 576px) {
+            .profil-container {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <div class="center-content">
+        <div class="profil-container">
+            <h1 class="text-center">Mon Profil</h1>
+            <form action="modifiermonprofil" method="post">
+                <%-- Récupérer l'objet Utilisateur à partir de la requête --%>
+                <% Utilisateur profilUtilisateur = (Utilisateur) request.getAttribute("profilUtilisateur"); %>
+
+                <%-- Vérifier si l'utilisateur existe --%>
+                <% if (profilUtilisateur != null) { %>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="pseudo" class="form-label">Pseudo :</label>
+                                <input type="text" class="form-control" id="pseudo" name="pseudo" value="<%= profilUtilisateur.getPseudo() %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="prenom" class="form-label">Prénom :</label>
+                                <input type="text" class="form-control" id="prenom" name="prenom" value="<%= profilUtilisateur.getPrenom() %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telephone" class="form-label">Téléphone :</label>
+                                <input type="tel" class="form-control" id="telephone" name="telephone" value="<%= profilUtilisateur.getTelephone() %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="codePostal" class="form-label">Code Postal :</label>
+                                <input type="text" class="form-control" id="codePostal" name="codePostal" value="<%= profilUtilisateur.getCodePostal() %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="form-label">Mot de passe actuel :</label>
+                                <input type="password" class="form-control" id="password" name="password" value="<%= profilUtilisateur.getMotDePasse() %>" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="nom" class="form-label">Nom :</label>
+                                <input type="text" class="form-control" id="nom" name="nom" value="<%= profilUtilisateur.getNom() %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email :</label>
+                                <input type="email" class="form-control" id="email" name="email" value="<%= profilUtilisateur.getEmail() %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="rue" class="form-label">Rue :</label>
+                                <input type="text" class="form-control" id="rue" name="rue" value="<%= profilUtilisateur.getRue() %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ville" class="form-label">Ville :</label>
+                                <input type="text" class="form-control" id="ville" name="ville" value="<%= profilUtilisateur.getVille() %>" required>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!--  <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="newPassword" class="form-label">Nouveau mot de passe :</label>
+                                <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="confirmPassword" class="form-label">Confirmation mot de passe :</label>
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <p>${utilisateur.credit}</p>
+                    
+                    <div class="form-actions">
+                        <form action="modifiermonprofil" method="post">
+                            <input type="hidden" name="action" value="supprimermoncompte">
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        </form>
+                    
+                        <form action="supprimermonprofil" method="post">
+                            <input type="hidden" name="action" value="supprimermoncompte">
+                            <button type="submit" class="btn btn-danger">Supprimer Compte</button>
+                        </form>
+                    </div>
+                    
+                <%-- Afficher d'autres informations du profil ici --%>
+                <% } else { %>
+                    <p>Utilisateur introuvable.</p>
+                <% } %>
+            </form>
+        </div>
+    </div>
+
+
+
+

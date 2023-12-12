@@ -1,0 +1,29 @@
+package fr.eni.encheres.bll;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class BLLException extends Exception {
+    private static final long serialVersionUID = 1L;
+    private List<Integer> listErrorCodes;
+
+    public BLLException() {
+        super();
+        this.listErrorCodes=new ArrayList<>();
+    }
+
+    public void addError(int code) {
+        this.listErrorCodes.add(code);
+    }
+
+    public boolean hasErrors()
+    {
+        return this.listErrorCodes.size()>0;
+    }
+
+    public List<Integer> getListErrorCodes()
+    {
+        return this.listErrorCodes;
+    }
+
+}

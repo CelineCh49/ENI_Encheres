@@ -1,0 +1,71 @@
+<div class="bg-image" style="
+    background-image: url('https://source.unsplash.com/random/objects');
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+">
+    <div class="container text-white text-center py-5 px-4 my-5" style="background-color: rgba(0, 0, 0, 0.4); backdrop-filter: blur(10px);">
+        <h1 class="display-5 fw-bold">Bienvenue sur notre site</h1>
+        <div class="col-lg-6 mx-auto">
+            <div class="card p-4 bg-light text-dark rounded" style="backdrop-filter: blur(20px);">
+                <form action="${pageContext.request.contextPath}/accueilconnecte" method="post" class="mb-3 needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="identifiant" class="form-label">Identifiant : </label>
+                        <input type="text" id="identifiant" name="identifiant" value="" class="form-control" required/>
+                        <div class="invalid-feedback">
+                            Veuillez entrer un identifiant.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="idMotDePasse" class="form-label">Mot de passe : </label>
+                        <input type="password" id="idMotDePasse" name="motDePasse" value="" class="form-control" required/>
+                        <div class="invalid-feedback">
+                            Veuillez entrer un mot de passe.
+                        </div>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Se souvenir de moi</label>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <input type="submit" value="connexion" class="btn btn-primary w-100 me-2"/>
+                    
+                        
+                    </div></form>
+                    <a href="${pageContext.request.contextPath}/enregistrer" class="btn btn-secondary w-100 ms-2">
+                            Créer un compte
+                    </a>
+                    <div class="text-end mt-3">
+                        <a href="${pageContext.request.contextPath}/motdepasseoublie">Mot de passe oublié?</a>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // JavaScript pour la validation du formulaire
+    (function () {
+        'use strict'
+        // Récupération des formulaires à valider
+        var forms = document.querySelectorAll('.needs-validation')
+        // Boucle sur les formulaires pour ajouter l'event listener
+        Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>
+
+
+
